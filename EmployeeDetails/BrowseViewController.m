@@ -111,7 +111,7 @@
         destViewController.empCode  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfDepartment]];
         destViewController.actualImageView  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfImage]];
         
-        NSLog(@"%@",destViewController.actualImageView );
+   
         
     }
 }

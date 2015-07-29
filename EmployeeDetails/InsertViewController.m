@@ -55,6 +55,7 @@
     // Execute the query.
     [self.dbManager executeQuery:query];
     
+    [self saveImage:_picView imgName:nameWithExt];
     // If the query was successfully executed then pop the view controller.
     if (self.dbManager.affectedRows != 0)
     

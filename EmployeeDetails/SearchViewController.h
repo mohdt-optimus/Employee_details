@@ -14,10 +14,26 @@
 @property (weak, nonatomic) IBOutlet UITextField *empCodeKey;
 
 @property (weak, nonatomic) IBOutlet UILabel *empCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *designationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *departmentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagLineLabel;
+@property  (weak,nonatomic) IBOutlet UILabel *picLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *picView;
 
+- (IBAction)searchNameDesignation:(id)sender;
 
+- (IBAction)searchEmpCode:(id)sender;
 
-- (IBAction)searchName:(id)sender;
 @property (nonatomic,strong) NSString *databasePath;
 @property (nonatomic) sqlite3 *Db;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *tagEmp;
+@property (weak, nonatomic) IBOutlet UILabel *tagName;
+@property (weak, nonatomic) IBOutlet UILabel *tagDesignation;
+@property (weak, nonatomic) IBOutlet UILabel *tagDepartment;
+@property (weak, nonatomic) IBOutlet UILabel *tagTagLine;
+
+
 @end
