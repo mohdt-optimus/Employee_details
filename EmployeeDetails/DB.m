@@ -33,17 +33,17 @@
         // Keep the database filename.
         self.databaseFilename = dbFilename;
         
-        // Copy the database file into the documents directory if necessary.
+        // Copy the database file into the documents directory
         [self copyDatabaseIntoDocumentsDirectory];
     }
     return self;
 }
 
 -(void)copyDatabaseIntoDocumentsDirectory{
-    // Check if the database file exists in the documents directory.
+    // Checking if the database file exists in the directory.
     NSString *destinationPath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
     if (![[NSFileManager defaultManager] fileExistsAtPath:destinationPath]) {
-        // The database file does not exist in the documents directory, so copy it from the main bundle now.
+        // The database file does not exist in the documents directory, so copying it
         NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseFilename];
         NSError *error;
         [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:destinationPath error:&error];
@@ -59,10 +59,10 @@
     // Create a sqlite object.
     sqlite3 *sqlite3Database;
     
-    // Set the database file path.
+    // Setting DB path.
     NSString *databasePath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
     
-    // Initialize the results array.
+    // Initializing results array.
     if (self.arrResults != nil) {
         [self.arrResults removeAllObjects];
         self.arrResults = nil;
@@ -80,7 +80,7 @@
     // Open the database.
     BOOL openDatabaseResult = sqlite3_open([databasePath UTF8String], &sqlite3Database);
     if(openDatabaseResult == SQLITE_OK) {
-        // Declare a sqlite3_stmt object in which will be stored the query after having been compiled into a SQLite statement.
+        // Declare a sqlite3_stmt object which will storing the query after been compiled into a SQLite statement.
         sqlite3_stmt *compiledStatement;
         
         // Load all data from database to memory.

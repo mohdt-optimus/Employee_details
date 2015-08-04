@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _nameLabel.text=_name;
+    _nameLabel.text=_name;              //Updating the local elements with the values recieved form the segue
     _designationLabel.text=_designation;
     _departmentLabel.text=_department;
     _tagLineLabel.text=_tagLine;

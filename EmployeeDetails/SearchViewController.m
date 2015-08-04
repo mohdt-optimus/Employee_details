@@ -17,11 +17,11 @@
 
 @implementation SearchViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      self.dbManager = [[DB alloc] initWithDatabaseFilename:@"employeeDB.sqlite"];
+    //employeeDB is database where data will be saved
     self.nameKey.delegate=self;
     self.empCodeKey.delegate=self;
     self.empCodeKey.delegate=self;
@@ -45,20 +45,20 @@
 - (IBAction)searchNameDesignation:(id)sender
 {
     NSString *query = [NSString stringWithFormat:@"select * from employee where name=\'%@\' and designation=\'%@\'",self.nameKey.text,self.designationKey.text];
-   
+   //Query to fetch the information where name and designation match
     if (self.results != nil)
     {
         self.results = nil;
     }
     self.results = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
-    if(self.results.count==0)
+    if(self.results.count==0)               //Checking if any result is found.
     {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Message"
                                                           message:@"Record Not Found"
                                                          delegate:nil
                                                 cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];
-        
+        //Showing alert box if no name , designation combitnation is obtained
         [message show];
         _empCodeLabel.hidden=true;
         _nameLabel.hidden=true;
@@ -76,7 +76,7 @@
         
     }
     else
-    {
+    {          //If record found then update the values of labels with the fetched detail
     _empCodeLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"empCode"]];
     _nameLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"name"]];
     _designationLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"designation"]];
@@ -84,7 +84,7 @@
     _tagLineLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"tagLine"]];
 
         _picView.image=[self loadImage:[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"pic"]]];
-        _empCodeLabel.hidden=false;
+        _empCodeLabel.hidden=false;                 //Enabling all the labels to be visible with all the details
         _nameLabel.hidden=false;
         _designationLabel.hidden=false;
         _departmentLabel.hidden=false;
@@ -103,7 +103,7 @@
 - (IBAction)searchEmpCode:(id)sender
 {
     NSString *query = [NSString stringWithFormat:@"select * from employee where empCode=%d",[self.empCodeKey.text intValue]];
-    
+    //Query to search the information on the basis of employee code
     if (self.results != nil)
     {
         self.results = nil;
@@ -116,7 +116,7 @@
                                                          delegate:nil
                                                 cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];
-        
+        //Showing alert box if no such employee code found
         [message show];
         _empCodeLabel.hidden=true;
         _nameLabel.hidden=true;
@@ -135,14 +135,14 @@
         
     }
     else
-    {
+    {       //If record found then update the values of labels with the fetched detail
         _empCodeLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"empCode"]];
         _nameLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"name"]];
         _designationLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"designation"]];
         _departmentLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"department"]];
         _tagLineLabel.text=[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"tagLine"]];
         _picView.image=[self loadImage:[[_results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"pic"]]];
-        _empCodeLabel.hidden=false;
+        _empCodeLabel.hidden=false;     //Enabling all the labels to be visible with all the details
         _nameLabel.hidden=false;
         _designationLabel.hidden=false;
         _departmentLabel.hidden=false;
@@ -161,7 +161,7 @@
 }
 
 -(UIImage *)loadImage: (NSString *)name
-{
+{               //This will load the image in view controller
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -172,14 +172,9 @@
 }
 
 
-
-
--(void) showUIAlertWithMessage:(NSString*)message andTitle:(NSString*)title{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{               //This will dismiss keyboard when user touches any where in the view
+    [self.view endEditing:YES];
 }
+
 @end

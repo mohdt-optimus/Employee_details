@@ -20,14 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.name.delegate = self;
-    self.empId.delegate = self;
-    self.designation.delegate = self;
-    self.department.delegate  = self;
-    self.tagline.delegate = self;
-    
     self.dbManager = [[DB alloc] initWithDatabaseFilename:@"employeeDB.sqlite"];
-
+    //employeeDB is our database. 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -147,5 +141,10 @@
         [data writeToFile:path atomically:YES];
     }
 }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{               //This will dismiss keyboard when user touches any where in the view
+    [self.view endEditing:YES];
+}
+
 
 @end

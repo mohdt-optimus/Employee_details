@@ -76,14 +76,8 @@
     
     NSInteger indexOfEmpId = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
     NSInteger indexOfFirstName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
-    
-   
-    
     // Set the loaded data to the appropriate cell labels.
     cell.textLabel.text = [NSString stringWithFormat:@"%@",[[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfFirstName]];
-    
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"EmpID: %@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfEmpId]];
-    
     return cell;
 }
 
@@ -97,13 +91,12 @@
         NSInteger indexOfDesignation = [self.dbManager.arrColumnNames indexOfObject:@"tagLine"];
         NSInteger indexOfDepartment = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
         NSInteger indexOfImage = [self.dbManager.arrColumnNames indexOfObject:@"pic"];
-        
+        //Storing index of each field
         
         NSIndexPath *indexPath = [self.tblview indexPathForSelectedRow];
         
         BrowseSecondViewController *destViewController = segue.destinationViewController;
-        
-        //  destViewController.actualFirstName  = [NSString stringWithFormat:@"EmpID: %@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfEmpId]];
+        //Updating the values of BrowseSecondViewController to show the details fetched through segue
         destViewController.name = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfFirstName]];
         destViewController.designation  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfLastName]];
         destViewController.department  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfAge]];
