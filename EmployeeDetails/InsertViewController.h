@@ -28,6 +28,7 @@
 - (IBAction)saveButton:(id)sender;
 - (IBAction)cameraButton:(id)sender;
 - (IBAction)galleryButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
 @property (nonatomic, strong) id<InsertViewControllerDelegate> delegate;
 @end

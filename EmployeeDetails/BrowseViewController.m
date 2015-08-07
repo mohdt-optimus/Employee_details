@@ -74,10 +74,10 @@
     // Dequeue the cell.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
     
-    NSInteger indexOfEmpId = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
-    NSInteger indexOfFirstName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
+    NSInteger indexOfEmpCode = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
+    NSInteger indexOfName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
     // Set the loaded data to the appropriate cell labels.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfFirstName]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfName]];
     return cell;
 }
 
@@ -85,11 +85,11 @@
 {
     if ([segue.identifier isEqualToString:@"segueDetail"])
     {
-        NSInteger indexOfFirstName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
-        NSInteger indexOfLastName = [self.dbManager.arrColumnNames indexOfObject:@"designation"];
-        NSInteger indexOfAge = [self.dbManager.arrColumnNames indexOfObject:@"department"];
-        NSInteger indexOfDesignation = [self.dbManager.arrColumnNames indexOfObject:@"tagLine"];
-        NSInteger indexOfDepartment = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
+        NSInteger indexOfName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
+        NSInteger indexOfDesignation = [self.dbManager.arrColumnNames indexOfObject:@"designation"];
+        NSInteger indexOfDepartment = [self.dbManager.arrColumnNames indexOfObject:@"department"];
+        NSInteger indexOfTagLine = [self.dbManager.arrColumnNames indexOfObject:@"tagLine"];
+        NSInteger indexOfEmpCode = [self.dbManager.arrColumnNames indexOfObject:@"empCode"];
         NSInteger indexOfImage = [self.dbManager.arrColumnNames indexOfObject:@"pic"];
         //Storing index of each field
         
@@ -97,11 +97,11 @@
         
         BrowseSecondViewController *destViewController = segue.destinationViewController;
         //Updating the values of BrowseSecondViewController to show the details fetched through segue
-        destViewController.name = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfFirstName]];
-        destViewController.designation  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfLastName]];
-        destViewController.department  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfAge]];
-        destViewController.tagLine  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfDesignation]];
-        destViewController.empCode  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfDepartment]];
+        destViewController.name = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfName]];
+        destViewController.designation  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfDesignation]];
+        destViewController.department  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfDepartment]];
+        destViewController.tagLine  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfTagLine]];
+        destViewController.empCode  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfEmpCode]];
         destViewController.actualImageView  = [NSString stringWithFormat:@"%@", [[self.arrEmpInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfImage]];
         
    

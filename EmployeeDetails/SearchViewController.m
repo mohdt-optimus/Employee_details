@@ -25,6 +25,10 @@
     self.nameKey.delegate=self;
     self.empCodeKey.delegate=self;
     self.empCodeKey.delegate=self;
+    UITapGestureRecognizer *yourTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollTap:)];
+    [self.scroller addGestureRecognizer:yourTap];
+    [self.view addSubview:_scroller];
+    [self.scroller setScrollEnabled:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -172,9 +176,9 @@
 }
 
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{               //This will dismiss keyboard when user touches any where in the view
+- (void)scrollTap:(UIGestureRecognizer*)gestureRecognizer {
+    
+    //make keyboard disappear
     [self.view endEditing:YES];
 }
-
 @end

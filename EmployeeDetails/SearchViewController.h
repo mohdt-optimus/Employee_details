@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
 @interface SearchViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 @property (weak, nonatomic) IBOutlet UITextField *nameKey;
 @property (weak, nonatomic) IBOutlet UITextField *designationKey;
 @property (weak, nonatomic) IBOutlet UITextField *empCodeKey;

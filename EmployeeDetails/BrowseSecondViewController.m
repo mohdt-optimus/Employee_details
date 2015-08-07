@@ -18,11 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _nameLabel.text=_name;              //Updating the local elements with the values recieved form the segue
-    _designationLabel.text=_designation;
-    _departmentLabel.text=_department;
-    _tagLineLabel.text=_tagLine;
-    _empCodeLabel.text=_empCode;
+    _nameLabel.text=[@"Name : " stringByAppendingString:_name];              //Updating the local elements with the values recieved form the segue
+    _designationLabel.text=[@"Designation : " stringByAppendingString:_designation];
+    _departmentLabel.text=[@"Department : " stringByAppendingString:_department];
+    _tagLineLabel.text=[@"Tag Line : " stringByAppendingString:_tagLine];
+    _empCodeLabel.text=[@"Employee Code : " stringByAppendingString:_empCode];
     _imageView.image=[self loadImage:_actualImageView];
 }
 
